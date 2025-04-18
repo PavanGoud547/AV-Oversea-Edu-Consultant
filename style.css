@@ -1,0 +1,972 @@
+/* Basic Reset & Defaults */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif; /* Use a font closer to the original if identified */
+    line-height: 1.6;
+    color: #333;
+    background-color: #fff;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Remove default underline from all links */
+a {
+    text-decoration: none;
+    color: #007bff; /* Primary blue color */
+    transition: color 0.3s ease, border-bottom 0.3s ease;
+}
+
+/* Custom hover effect for all links */
+a:hover {
+    color: #0056b3;
+    border-bottom: 2px solid #0056b3;
+}
+
+/* Specific hover effect for nav bar links */
+.nav-link {
+    display: block;
+    padding: 10px 15px;
+    color: #333;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease, border-bottom 0.3s ease;
+    position: relative;
+}
+
+.nav-link:hover {
+    color: #007bff;
+    border-bottom: 2px solid #007bff;
+}
+
+.nav-link.active {
+    color: #007bff;
+    border-bottom: 2px solid #007bff;
+}
+
+/* Remove previous nav-link underline effect */
+.nav-link::after {
+    content: none;
+}
+
+/* Footer links hover effect */
+footer a {
+    color: #000;
+    text-decoration: none;
+    transition: color 0.3s ease, border-bottom 0.3s ease;
+}
+
+footer a:hover {
+    color: #007bff;
+    border-bottom: 2px solid #007bff;
+}
+
+/* Buttons */
+.button {
+    display: inline-block;
+    padding: 10px 25px;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    font-weight: bold;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.button.call-button {
+    border: 1px solid #007bff;
+    color: #007bff;
+    background-color: #fff;
+    display: inline-block;
+    padding: 10px 25px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    font-weight: bold;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+.button.call-button:hover {
+    background-color: #f0f8ff;
+}
+
+/* Mobile view: make call button full width and styled like nav link */
+@media (max-width: 768px) {
+    .nav-list .call-button {
+        position: sticky;
+        display: block;
+        width: 100%;
+        margin: 10px 0;
+        padding: 12px 0;
+        border-radius: 0;
+        font-size: 1rem;
+        text-align: center;
+        border: none;
+        background-color: #007bff;
+        color: #fff;
+        font-weight: 600;
+        transition: background-color 0.3s ease;
+    }
+    .nav-list .call-button:hover {
+        background-color: #0056b3;
+        color: #fff;
+    }
+}
+
+.button.button-primary {
+    background-color: #007bff;
+    color: #fff;
+    border-color: #007bff;
+    width: 100%;
+    padding: 12px 20px;
+    font-size: 1rem;
+}
+.button.button-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+/* Updated Header Styles */
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+}
+
+.logo-container {
+    flex: 0 0 auto;
+}
+
+.logo {
+    height: 50px;
+}
+
+/* Main Navigation */
+.main-nav {
+    flex: 1 1 auto;
+    margin: 0 20px;
+}
+
+.nav-list {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* Mobile Menu Toggle */
+.mobile-menu-toggle {
+    display: none;
+    cursor: pointer;
+    width: 30px;
+    height: 24px;
+    position: relative;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.mobile-menu-toggle span {
+    display: block;
+    height: 3px;
+    width: 100%;
+    background-color: #333;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+/* Responsive Styles */
+@media (max-width: 992px) {
+    .main-nav {
+        margin: 0 10px;
+    }
+    .nav-link {
+        padding: 10px;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .header-container {
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .logo-container {
+        order: 1;
+    }
+    
+    .mobile-menu-toggle {
+        display: flex;
+        order: 3;
+        margin-left: auto;
+    }
+    
+    .main-nav {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: #fff;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.5s ease;
+        z-index: 10;
+        margin: 0;
+    }
+    
+    .main-nav.active {
+        max-height: 350px;
+    }
+    
+    .nav-list {
+        flex-direction: column;
+        padding: 10px 0;
+    }
+    
+    .nav-link {
+        padding: 12px 20px;
+        text-align: center;
+    }
+    
+    .nav-link::after {
+        display: none;
+    }
+    
+    .call-button {
+        margin-left: auto;
+        order: 2;
+        font-size: 0.9rem;
+        padding: 8px 12px;
+    }
+    
+    /* Animate hamburger to X when active */
+    .mobile-menu-toggle.active span:nth-child(1) {
+        transform: translateY(10px) rotate(45deg);
+    }
+    
+    .mobile-menu-toggle.active span:nth-child(2) {
+        opacity: 0;
+    }
+    
+    .mobile-menu-toggle.active span:nth-child(3) {
+        transform: translateY(-10px) rotate(-45deg);
+    }
+}
+
+@media (max-width: 576px) {
+    .logo {
+        height: 40px;
+    }
+    
+    .call-button {
+        font-size: 0.8rem;
+        padding: 6px 10px;
+    }
+}
+
+/* Hero Section */
+.hero {
+    background: url('images/hero-image.png') no-repeat center center/cover; /* Replace with actual image */
+    padding: 80px 0;
+    position: relative; /* For potential pseudo-elements if needed */
+}
+
+.hero::before { /* Optional overlay for text readability */
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3); /* Dark overlay */
+    z-index: 1;
+}
+
+.hero-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+    position: relative; /* To stay above the overlay */
+    z-index: 2;
+}
+
+.hero-text {
+    flex-basis: 55%;
+    color: #fff;
+}
+
+.hero-text h1 {
+    margin-bottom: 2rem;
+}
+
+.hero-title{
+    font-size: 1rem;
+    margin-bottom: 2rem;
+}
+
+.hero-text ul li {
+    margin-bottom: 0.8rem;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+}
+.hero-text ul li img {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    filter: brightness(0) invert(1); /* Make checkmark white */
+}
+
+.hero-form-card {
+    flex-basis: 35%;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+}
+
+.hero-form-card h2 {
+    text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: #1e3a5f;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.8rem;
+    color: #555;
+    margin-bottom: 3px; /* Visually hide label, but keep for accessibility */
+     /* display: none; */ /* Alternative: hide visually */
+     position: absolute;
+     left: -9999px;
+}
+
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="tel"] {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 0.95rem;
+}
+.form-group input::placeholder {
+    color: #aaa;
+}
+
+.form-group-tel .tel-input {
+    display: flex;
+}
+
+.form-group-tel .country-code {
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    border: 1px solid #ccc;
+    border-right: none;
+    border-radius: 4px 0 0 4px;
+    background-color: #f8f8f8;
+    font-size: 0.95rem;
+}
+.form-group-tel .country-code img {
+    width: 20px;
+    margin-right: 5px;
+}
+.form-group-tel input[type="tel"] {
+    border-radius: 0 4px 4px 0;
+    border-left: none;
+}
+
+
+.form-group-checkbox {
+    display: flex;
+    align-items: center;
+    font-size: 0.85rem;
+    color: #555;
+}
+.form-group-checkbox input[type="checkbox"] {
+    margin-right: 8px;
+    accent-color: #007bff; /* Style checkbox color */
+}
+.form-group-checkbox label {
+    position: static; /* Override absolute positioning for this label */
+    margin-bottom: 0;
+    font-size: 0.85rem;
+}
+.form-group-checkbox a {
+     color: #007bff;
+}
+
+
+/* Why Choose Section */
+.why-choose, .advantage, .top-universities, .success-stories, .about-leverage, .scholarships {
+    padding: 60px 0;
+}
+
+.why-choose { background-color: #f8f9fa; } /* Light gray background */
+
+.features {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    text-align: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.feature-item {
+    flex-basis: calc(25% - 20px);
+}
+
+.feature-item img {
+    height: 60px; /* Adjust size */
+    margin: 0 auto 15px auto;
+}
+
+.feature-item p {
+    font-size: 1rem;
+    color: #333;
+}
+.feature-item p strong {
+    font-weight: bold;
+}
+
+/* Advantage Section */
+.advantage-items {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Responsive grid */
+    gap: 30px;
+    text-align: center;
+}
+
+.advantage-item img {
+    height: 60px; /* Adjust size */
+    margin: 0 auto 15px auto;
+}
+.advantage-item p {
+    font-size: 0.95rem;
+    color: #555;
+}
+
+/* Top Universities Section */
+.tabs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+    gap: 10px; /* Gap between tab buttons */
+    border-bottom: 1px solid #eee;
+}
+
+.tab-link {
+    background: none;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 1rem;
+    color: #555;
+    border-bottom: 3px solid transparent;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: -1px; /* Overlap border */
+    transition: color 0.3s ease, border-color 0.3s ease;
+}
+.tab-link img {
+    width: 20px;
+}
+
+.tab-link:hover {
+    color: #007bff;
+}
+
+.tab-link.active {
+    color: #007bff;
+    border-bottom: 3px solid #007bff;
+    font-weight: bold;
+}
+
+.tab-content {
+    display: none; /* Hidden by default */
+}
+
+.tab-content.active {
+    display: block; /* Shown when active */
+}
+
+.university-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
+    gap: 25px;
+}
+/* Ensure grid display is re-applied by JS if needed */
+.tab-content.active .university-grid {
+     display: grid;
+}
+
+.uni-card {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    transition: box-shadow 0.3s ease;
+}
+.uni-card:hover {
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.uni-card img {
+    width: 100px; /* Adjust logo size */
+    height: auto;
+    margin-bottom: 15px;
+}
+
+.uni-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+    color: #1e3a5f;
+}
+
+.uni-card p {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 15px;
+    flex-grow: 1; /* Pushes the course count down */
+}
+
+.course-count {
+    background-color: #e7f3ff; /* Light blue background */
+    color: #007bff;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    align-self: flex-start; /* Align to the start of the flex item */
+}
+
+
+/* Success Stories Section */
+.success-stories {
+    background-color: #f8f9fa; /* Light gray background */
+}
+.success-stories .subtitle {
+    text-align: center;
+    margin-top: -2rem;
+    margin-bottom: 2.5rem;
+    color: #555;
+}
+
+.testimonial-grid {
+     display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* Responsive grid */
+    gap: 25px;
+}
+
+.testimonial-card {
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+}
+
+.student-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+.student-photo {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.student-info h3 {
+    font-size: 1.1rem;
+    margin-bottom: 2px;
+    color: #1e3a5f;
+}
+.student-info p {
+    font-size: 0.9rem;
+    color: #666;
+}
+.student-info p span { /* Arrow */
+    color: #007bff;
+    font-weight: bold;
+    margin: 0 5px;
+}
+
+.testimonial-card .quote {
+    font-size: 0.95rem;
+    color: #333;
+    margin-bottom: 20px;
+    flex-grow: 1; /* Pushes footer down */
+    font-style: italic;
+}
+
+.testimonial-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto; /* Pushes footer to bottom */
+}
+
+.testimonial-footer .tag {
+    background-color: #e7f3ff; /* Light blue background */
+    color: #007bff;
+    padding: 4px 12px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+}
+
+.testimonial-footer .uni-logo {
+    height: 30px; /* Adjust logo size */
+    width: auto;
+    max-width: 100px; /* Limit width */
+    object-fit: contain;
+}
+
+/* About Leverage Edu Section */
+.about-leverage p, .scholarships p {
+    margin-bottom: 1rem;
+    color: #555;
+    font-size: 0.95rem;
+}
+.about-leverage h3 {
+    margin-top: 2rem;
+    font-size: 1.5rem;
+     color: #1e3a5f;
+}
+.about-leverage ul {
+    margin-top: 1rem;
+    padding-left: 20px; /* Indent list */
+}
+.about-leverage ul li {
+    margin-bottom: 0.8rem;
+    list-style-type: disc; /* Standard bullet points */
+    color: #555;
+    font-size: 0.95rem;
+}
+.about-leverage ul li strong {
+    color: #333;
+}
+
+/* Scholarships Section */
+.scholarships {
+     background-color: #f8f9fa; /* Light gray background */
+}
+
+.scholarships .read-more {
+    color: #007bff;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Footer */
+footer {
+    background-color: #fff;
+    padding-top: 40px;
+    border-top: 1px solid #ccc;
+    color: #000;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 20px;
+    flex-wrap: wrap; /* Wrap on smaller screens */
+    gap: 20px;
+    color: #000;
+}
+
+.footer-left .logo {
+    height: 50px; /* Larger logo in footer */
+    margin-bottom: 10px;
+}
+.footer-left p {
+    font-size: 0.9rem;
+    color: #000;
+}
+
+.footer-right {
+    display: flex;
+    gap: 25px;
+}
+.footer-right a {
+    color: #000;
+    font-size: 0.9rem;
+    text-decoration: none;
+}
+.footer-right a:hover {
+    color: #007bff;
+    text-decoration: underline;
+}
+
+.copyright {
+    border-top: 1px solid #ccc;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-top: 20px;
+    color: #000;
+}
+.copyright p {
+    text-align: center;
+    font-size: 0.85rem;
+    color: #000;
+}
+
+/* Basic Responsiveness (Example) */
+@media (max-width: 992px) {
+    .hero-container {
+        flex-direction: column;
+        text-align: center;
+    }
+    .hero-text {
+        margin-bottom: 30px;
+    }
+     .hero-form-card {
+        flex-basis: 80%;
+        max-width: 450px;
+    }
+    .features {
+        justify-content: center;
+    }
+    .feature-item {
+        flex-basis: calc(50% - 20px); /* Two columns */
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    h1 { font-size: 2.2rem; }
+    h2 { font-size: 1.8rem; }
+
+    .header-container {
+        flex-direction: row;
+        gap: 10px;
+        align-items: center;
+    }
+     .button.call-button {
+        padding: 8px 15px;
+     }
+
+    .university-grid, .testimonial-grid {
+        grid-template-columns: 1fr; /* Single column */
+    }
+
+     .tabs {
+        justify-content: flex-start; /* Align tabs left */
+        overflow-x: auto; /* Allow horizontal scrolling for tabs */
+        white-space: nowrap;
+        padding-bottom: 10px; /* Space for scrollbar */
+    }
+     .tab-link {
+        flex-shrink: 0; /* Prevent tabs from shrinking */
+     }
+
+
+    .footer-container {
+         flex-direction: column;
+         align-items: center;
+         text-align: center;
+    }
+    .footer-right {
+        margin-top: 15px;
+        gap: 15px;
+    }
+
+}
+
+@media (max-width: 576px) {
+     .feature-item {
+        flex-basis: 100%; /* Single column */
+    }
+     .hero-form-card {
+        flex-basis: 95%;
+     }
+     .container {
+        padding: 0 15px;
+     }
+}
+
+/* Social Icons CSS */
+.social-links {
+    display: flex;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.social-links a {
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.social-links a:hover {
+    transform: translateY(-3px);
+}
+
+.social-links img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.button call-button {
+    padding: 8px 15px;
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+/* Fix for mobile view overlapping sections */
+@media screen and (max-width: 768px) {
+    /* Add proper spacing between sections */
+    section {
+      margin-bottom: 30px;
+      padding: 30px 15px;
+      width: 100%;
+      box-sizing: border-box;
+      clear: both;
+    }
+    
+    /* Specific fixes for Success Stories section */
+    .success-stories {
+      padding-bottom: 40px;
+      margin-bottom: 40px;
+      position: relative;
+      z-index: 1;
+    }
+    
+    /* Fix for About/Dream section */
+    .about-leverage {
+      position: relative;
+      z-index: 1;
+      padding-top: 40px;
+      clear: both;
+    }
+    
+    /* Make testimonial cards stack properly on mobile */
+    .testimonial-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    
+    .testimonial-card {
+      width: 100%;
+      margin-bottom: 15px;
+    }
+    
+    /* Ensure proper text sizing on mobile */
+    h2 {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+    
+    /* Fix container margins */
+    .container {
+      padding: 0 15px;
+      width: 100%;
+      box-sizing: border-box;
+          }
+  }
+
+
+/* // Animation */
+
+  @keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.section {
+    opacity: 0; /* Start hidden */
+    animation: fadeIn 0.5s forwards; /* Apply fade-in animation */
+}
+
+/* Add a class to trigger the animation when the section is in view */
+.section.visible {
+    opacity: 1; /* Make it visible */
+}
+  .nav-link {
+    opacity: 0; /* Start hidden */
+    transform: translateY(-10px); /* Start slightly above */
+    animation: slideIn 0.3s forwards; /* Apply slide-in animation */
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Trigger the animation when the mobile menu is active */
+.main-nav.active .nav-link {
+    animation-delay: 0.1s; /* Stagger the animation */
+}
+.feature-item img {
+    transition: transform 0.3s ease;
+}
+
+.feature-item img:hover {
+    transform: scale(1.1); /* Zoom in on hover */
+}
+.testimonial-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-5px); /* Lift the card */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* Enhance shadow */
+}
+html {
+    scroll-behavior: smooth; /* Enable smooth scrolling */
+}
+.hero-text {
+    opacity: 0; /* Start hidden */
+    animation: fadeIn 1s forwards; /* Apply fade-in animation */
+    animation-delay: 0.5s; /* Delay for effect */
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

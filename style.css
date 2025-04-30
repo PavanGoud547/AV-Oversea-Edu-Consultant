@@ -38,13 +38,17 @@ a:hover {
     color: #333;
     text-decoration: none;
     font-weight: 500;
-    transition: color 0.3s ease, border-bottom 0.3s ease;
+    transition: color 0.3s ease, border-bottom 0.3s ease, transform 0.3s ease;
     position: relative;
+    opacity: 0;
+    transform: translateY(-10px);
+    animation: slideIn 0.3s forwards;
 }
 
 .nav-link:hover {
     color: #007bff;
     border-bottom: 2px solid #007bff;
+    transform: scale(1.1);
 }
 
 .nav-link.active {
@@ -134,6 +138,24 @@ footer a:hover {
 }
 
 /* Updated Header Styles */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    z-index: 1000;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+header.scrolled {
+    background-color: rgba(255, 255, 255, 0.85);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
+
 .header-container {
     display: flex;
     justify-content: space-between;
@@ -279,8 +301,9 @@ footer a:hover {
 /* Hero Section */
 .hero {
     background: url('images/hero-image.png') no-repeat center center/cover; /* Replace with actual image */
-    padding: 80px 0;
+    padding: 80px 0 40px; /* Adjust padding to account for fixed header */
     position: relative; /* For potential pseudo-elements if needed */
+    margin-top: 70px; /* Offset for fixed header */
 }
 
 .hero::before { /* Optional overlay for text readability */
@@ -306,6 +329,9 @@ footer a:hover {
 .hero-text {
     flex-basis: 55%;
     color: #fff;
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+    animation-delay: 0.5s;
 }
 
 .hero-text h1 {
@@ -336,6 +362,9 @@ footer a:hover {
     padding: 30px;
     border-radius: 8px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+    animation-delay: 1s;
 }
 
 .hero-form-card h2 {
